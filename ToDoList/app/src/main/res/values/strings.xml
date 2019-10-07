@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">ToDoList</string>
     <string name="dialog_title">テキストを入力</string>
+    <string name="add_button">追加</string>
     <string name="input_text"></string>
-    <string name="dialog_btn_submit"></string>
+    <string name="dialog_btn_submit">登録</string>
     <string name="dialog_btn_cancel"></string>
     <string-array name="list_value">
     </string-array>
