@@ -4,10 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.ListView
+import android.widget.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -16,31 +13,33 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val listValue = findViewById<ListView>(R.id.list_value)
-        val items = ArrayList<String>()
-        val adapter = ArrayAdapter(applicationContext, android.R.layout.simple_expandable_list_item_1, items)
+        var listValue = findViewById<ListView>(R.id.list_value)
+        val items : MutableList<MutableMap<String, String>> = mutableListOf()
+        val from = arrayOf("text")
+        val to = arrayOf(android.R.id.text1)
+        var adapter = SimpleAdapter(applicationContext, items, android.R.layout.simple_expandable_list_item_2, from, to)
         listValue.adapter = adapter
         listValue.onItemClickListener = LIstItemClickListener()
 
-        val addButton = findViewById<Button>(R.id.add_button)
-        addButton.setOnClickListener(AddButtonClickListener())
-    }
-    private inner class AddButtonClickListener : View.OnClickListener{
-        override fun onClick(view: View) {
-
-
-//            val dialog = InputDialog()
-//            dialog.show(supportFragmentManager, "OrderConfirmDialogFragment")
+        var addButton = findViewById<Button>(R.id.add_button)
+        addButton.setOnClickListener{view: View ->
+            val intent = Intent(applicationContext, EditActivity::class.java)
+            intent.putExtra("list_value",items as Array<String>)
+            startActivity(intent)
         }
     }
+
     private inner class LIstItemClickListener : AdapterView.OnItemClickListener{
         override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
 
             //MutableList<String>だと、putExtra()で渡せない？
-            val item = parent.getItemIdAtPosition(position) as MutableMap<String, String>
-            val list_value = item["input_text"]
+            val items = parent.getItemIdAtPosition(position) as Array<String>
+            val textOfItems = parent.getItemIdAtPosition(position) as MutableMap<String, String>
+            val text = textOfItems["text"]
+
             val intent = Intent(applicationContext, EditActivity::class.java)
-            intent.putExtra("list_value",list_value)
+            intent.putExtra("list_value",items)
+            intent.putExtra("select_text",text)
             startActivity(intent)
         }
     }

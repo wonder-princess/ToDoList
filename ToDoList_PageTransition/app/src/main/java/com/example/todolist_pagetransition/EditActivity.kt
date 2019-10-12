@@ -15,12 +15,24 @@ class EditActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit)
 
-        val getTextFromMain = intent.getStringExtra("list_value")
-        val input_text = findViewById<TextView>(R.id.edit_text)
+        var getListFromMain = intent.getStringExtra("list_value")
+        var getTextFromMain = intent.getStringExtra("select_text")
+        var input_text = findViewById<TextView>(R.id.input_text_edit)
         input_text.text = getTextFromMain
 
+        //登録ボタン
+        var submit_button = findViewById<Button>(R.id.submit_button_edit)
+        submit_button.setOnClickListener{view: View ->
+//            getTextFromMain.setText(findViewById<TextView>(R.id.input_text_edit))
+        }
+
+        var delete_button = findViewById<Button>(R.id.delete_button_edit)
+        delete_button.setOnClickListener{view: View ->
+
+        }
+
         //戻るボタン
-        val back_button = findViewById<Button>(R.id.back_button)
+        var back_button = findViewById<Button>(R.id.back_button_edit)
         back_button.setOnClickListener(){
             finish()
         }
