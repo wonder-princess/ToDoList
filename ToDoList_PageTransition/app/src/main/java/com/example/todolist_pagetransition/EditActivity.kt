@@ -15,19 +15,19 @@ class EditActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit)
 
-        var getListFromMain = intent.getStringExtra("list_value")
-        var getTextFromMain = intent.getStringExtra("select_text")
         var input_text = findViewById<TextView>(R.id.input_text_edit)
-        input_text.text = getTextFromMain
+        val selectedItem = intent.getStringExtra("selectedItem")
+        var listValue = findViewById<ListView>(R.id.list_value)
 
         //登録ボタン
         var submit_button = findViewById<Button>(R.id.submit_button_edit)
-        submit_button.setOnClickListener{view: View ->
-//            getTextFromMain.setText(findViewById<TextView>(R.id.input_text_edit))
+        submit_button.setOnClickListener(){view: View ->
+            selectedItem.setText(findViewById<TextView>(R.id.input_text_edit))
         }
 
         var delete_button = findViewById<Button>(R.id.delete_button_edit)
         delete_button.setOnClickListener{view: View ->
+            listValue.remove(selectedItem)
 
         }
 
@@ -37,5 +37,10 @@ class EditActivity : AppCompatActivity() {
             finish()
         }
 
+        var button = findViewById<Button>(R.id.submit_button_add)
+        submit_button.setOnClickListener{view: View ->
+            var listValue = findViewById<ListView>(R.id.list_value)
+            listValue.addView(input_text)
+        }
     }
 }

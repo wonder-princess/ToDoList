@@ -13,14 +13,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //リスト
         var listValue = findViewById<ListView>(R.id.list_value)
-        val items : MutableList<MutableMap<String, String>> = mutableListOf()
-        val from = arrayOf("text")
-        val to = arrayOf(android.R.id.text1)
-        var adapter = SimpleAdapter(applicationContext, items, android.R.layout.simple_expandable_list_item_2, from, to)
+        val items : MutableList<String> = mutableListOf()
+        var adapter = ArrayAdapter(applicationContext, android.R.layout.simple_expandable_list_item_1, items)
         listValue.adapter = adapter
         listValue.onItemClickListener = LIstItemClickListener()
 
+        //項目追加ボタン
         var addButton = findViewById<Button>(R.id.add_button)
         addButton.setOnClickListener{view: View ->
             val intent = Intent(applicationContext, EditActivity::class.java)
@@ -32,15 +32,11 @@ class MainActivity : AppCompatActivity() {
     private inner class LIstItemClickListener : AdapterView.OnItemClickListener{
         override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
 
-            //MutableList<String>だと、putExtra()で渡せない？
-            val items = parent.getItemIdAtPosition(position) as Array<String>
-            val textOfItems = parent.getItemIdAtPosition(position) as MutableMap<String, String>
-            val text = textOfItems["text"]
-
+            val selectedItem = parent.getItemIdAtPosition(position) as String
             val intent = Intent(applicationContext, EditActivity::class.java)
-            intent.putExtra("list_value",items)
-            intent.putExtra("select_text",text)
+            intent.putExtra("selectedItem",selectedItem)
             startActivity(intent)
+
         }
     }
 }

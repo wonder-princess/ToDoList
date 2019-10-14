@@ -13,7 +13,6 @@ class AddItemActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit)
 
-//        var getListFromMain = intent.getStringExtra("list_value")
         var input_text = findViewById<TextView>(R.id.input_text_add)
 
         //登録ボタン
