@@ -22,7 +22,6 @@ class EditActivity : AppCompatActivity() {
         //登録ボタン
         var submit_button = findViewById<Button>(R.id.submit_button_edit)
         submit_button.setOnClickListener(){view: View ->
-
             selectedItem.text = findViewById<TextView>(R.id.input_text_edit).text
         }
 

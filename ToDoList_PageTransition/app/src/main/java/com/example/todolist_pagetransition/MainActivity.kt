@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         listValue.adapter = adapter
         listValue.onItemClickListener = LIstItemClickListener()
 
-        //項目追加ボタン
+        //項目追加ボタンselectedItem
         var addButton = findViewById<Button>(R.id.add_button)
         addButton.setOnClickListener{view: View ->
             val intent = Intent(applicationContext, EditActivity::class.java)
@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() {
 
     private inner class LIstItemClickListener : AdapterView.OnItemClickListener{
         override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-
             val selectedItem = parent.getItemIdAtPosition(position) as String
             val intent = Intent(applicationContext, EditActivity::class.java)
             intent.putExtra("selectedItem",selectedItem)

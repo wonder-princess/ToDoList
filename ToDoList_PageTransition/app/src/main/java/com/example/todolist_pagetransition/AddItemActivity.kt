@@ -27,6 +27,5 @@ class AddItemActivity : AppCompatActivity() {
         back_button.setOnClickListener(){
             finish()
         }
-
     }
 }
