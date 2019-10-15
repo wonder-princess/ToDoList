@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         listValue.adapter = adapter
         listValue.onItemClickListener = LIstItemClickListener()
 
-        //項目追加ボタンselectedItem
+        //項目追加ボタン
         var addButton = findViewById<Button>(R.id.add_button)
         addButton.setOnClickListener{view: View ->
             val intent = Intent(applicationContext, EditActivity::class.java)
