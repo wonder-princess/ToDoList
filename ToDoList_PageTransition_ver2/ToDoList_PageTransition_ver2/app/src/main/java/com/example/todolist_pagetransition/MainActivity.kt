@@ -49,17 +49,4 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-    /*
-    override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
-        super.onActivityResult(requestCode, resultCode, intent)
-
-        if (resultCode == Activity.RESULT_OK &&
-            requestCode == RESULT_SUBACTIVITY && intent != null) {
-
-            // in case of nothing exist in Intent, just preventing NPE
-            val res = intent.extras.getString(EXTRA_MESSAGE)?: "Null"
-            textView.text = res
-        }
-    }
-    */
 }
