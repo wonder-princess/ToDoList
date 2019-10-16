@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
 
         //リスト
         var listValue = findViewById<ListView>(R.id.list_value)
-
         var adapter = ArrayAdapter(applicationContext, android.R.layout.simple_expandable_list_item_1, items)
         listValue.adapter = adapter
         listValue.onItemClickListener = LIstItemClickListener()
