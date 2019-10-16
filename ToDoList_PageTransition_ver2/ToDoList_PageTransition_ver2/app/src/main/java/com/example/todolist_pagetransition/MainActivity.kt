@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
             val buttonType = intent.getStringExtra("buttonType")
             if (buttonType.toString() == "edit"){
                 val textFromEdit = intent.getStringExtra("editText")
-                selectedItem.text = textFromEdit.toString()
+                selectedItem = textFromEdit.toString()
             }
             else{
                 items.remove(selectedItem)
