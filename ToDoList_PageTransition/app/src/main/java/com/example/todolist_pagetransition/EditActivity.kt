@@ -17,7 +17,12 @@ class EditActivity : AppCompatActivity() {
 
         var input_text = findViewById<TextView>(R.id.input_text_edit)
         val selectedItem = intent.getStringExtra("selectedItem")
-        var listValue = findViewById<ListView>(R.id.list_value)
+        //<> ← 型変換        
+//        var listValue = findViewById<ListView>(R.id.list_value)
+        // asの場合は成功したかしてないかがboolで帰ってくる（C#仕様）
+        // 
+//        var listValue = findViewById(R.id.list_value) as ListView
+        var listValue = findViewById(R.id.list_value) as Mutablelist
 
         //登録ボタン
         var submit_button = findViewById<Button>(R.id.submit_button_edit)
