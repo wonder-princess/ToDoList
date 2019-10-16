@@ -10,13 +10,15 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    val items : MutableList<String> = mutableListOf()
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         //リスト
         var listValue = findViewById<ListView>(R.id.list_value)
-        val items : MutableList<String> = mutableListOf()
+
         var adapter = ArrayAdapter(applicationContext, android.R.layout.simple_expandable_list_item_1, items)
         listValue.adapter = adapter
         listValue.onItemClickListener = LIstItemClickListener()
